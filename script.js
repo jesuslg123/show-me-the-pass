@@ -28,7 +28,7 @@ function createButton(element) {
 	var button = document.createElement("Button")
 	var element_style = window.getComputedStyle(element)
 	IMG_LOCK = '<img style="height:100%" src="'+getUrlForBrowser('icons/lock.png')+'">'
-    IMG_UNLOCK = '<img style="height:100%" src="'+getUrlForBrowser('icons/unlock.png')+'">'
+        IMG_UNLOCK = '<img style="height:100%" src="'+getUrlForBrowser('icons/unlock.png')+'">'
 	console.log(element_style.paddingTop)
 
 	try {
