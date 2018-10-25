@@ -8,9 +8,12 @@
 
   "content_scripts": [
     {
+      "all_frames": true,
       "matches": ["*://*/*"],
-      "js": ["script.js"]
+      "js": ["script.js"]   
     }
+  ],
+  "web_accessible_resources": [
+    "icons/*"
   ]
-
 }
