@@ -1,7 +1,7 @@
 initialize()
 
 function initialize() {
-	var inputs = document.querySelectorAll('input[type="password"]')
+	let inputs = document.querySelectorAll('input[type="password"]')
 	for (let input of inputs) {
 		processInput(input)
 	}
@@ -17,7 +17,7 @@ function getUrlForBrowser(url){
 }
 
 function processInput (element) {
-	var button = createButton(element)
+	let button = createButton(element)
 	box = createPasswordBox()
 	element.after(box)
 	box.appendChild(element)
@@ -25,14 +25,12 @@ function processInput (element) {
 }
 	
 function createButton(element) {
-	var button = document.createElement("Button")
-	var element_style = window.getComputedStyle(element)
-	IMG_LOCK = '<img style="height:100%" src="'+getUrlForBrowser('icons/lock.png')+'">'
-        IMG_UNLOCK = '<img style="height:100%" src="'+getUrlForBrowser('icons/unlock.png')+'">'
-	console.log(element_style.paddingTop)
+	let button = document.createElement("Button")
+	let element_style = window.getComputedStyle(element)
+	const IMG = (status) => '<img style="margin:auto;vertical-align: middle" src="'+getUrlForBrowser('icons/'+status+'.png')+'">'
 
 	try {
-		button.innerHTML = IMG_UNLOCK
+		button.innerHTML = IMG('unlock')
 	} catch (error) {
 		button.innerHTML = 'U'
 		console.log(error)
@@ -40,16 +38,16 @@ function createButton(element) {
 	
 	button.type = 'button'
 	button.style.background = 'transparent'
-	button.style.height = '100%'
+	button.style.margin = element_style.margin
+	button.style.padding = element_style.padding
 	button.style.marginLeft = '-40px'
-	button.style.marginTop = element_style.marginTop
 	button.style.border = 'none'
-	button.onclick = function (e) {
-		var type = element.getAttribute("type")
+	button.onclick = function () {
+		let type = element.getAttribute("type")
 		if (type == "text") {
 			type = "password"
 			try {
-				button.innerHTML = IMG_UNLOCK
+				button.innerHTML = IMG('unlock')
 			} catch (error) {
 				button.innerHTML = 'U'
 				console.log(error)
@@ -57,9 +55,9 @@ function createButton(element) {
 		} else {
 			type = "text"
 			try {
-				button.innerHTML = IMG_LOCK
+				button.innerHTML = IMG('lock')
 			} catch (error) {
-				button.innerHTML = 'U'
+				button.innerHTML = 'L'
 				console.log(error)
 			}
 		}
@@ -69,7 +67,7 @@ function createButton(element) {
 }
 
 function createPasswordBox(){
-	var box = document.createElement('div')
+	let box = document.createElement('div')
 	box.style.display = 'flex'
 	return box
 }
